@@ -32,4 +32,8 @@ kubectl get ingresses
 # See the result
 192.168.99.100
 
+# Clean-up
+minikube stop
+minikube delete
+
 ```

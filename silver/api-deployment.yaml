@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: silver-api-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: silver-api-deployment
+  template:
+    metadata:
+      labels:
+        app: silver-api-deployment
+    spec:
+      containers:
+        - name: silver-api-application
+          image: main-api
+          ports:
+            - containerPort: 4567

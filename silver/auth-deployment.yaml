@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: silver-auth-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: silver-auth-deployment
+  template:
+    metadata:
+      labels:
+        app: silver-auth-deployment
+    spec:
+      containers:
+        - name: silver-auth-application
+          image: quay.io/coreos/jwt-auth-example
+          ports:
+            - containerPort: 6000
