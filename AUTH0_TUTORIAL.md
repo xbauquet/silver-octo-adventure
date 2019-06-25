@@ -2,7 +2,6 @@
 # Auth0 Tutorial
 
 [Link](https://auth0.com/blog/kubernetes-tutorial-step-by-step-introduction-to-basic-concepts/)
-
 ## Command line log
 ```bash
 # Start minicube
@@ -30,10 +29,21 @@ kubectl apply -f ingress.yaml
 kubectl get ingresses
 
 # See the result
-192.168.99.100
+minikube ip
 
 # Clean-up
 minikube stop
 minikube delete
+
+```
+
+## Debug nginx-ingress
+[Link](https://github.com/kubernetes/ingress-nginx/issues/411)
+```bash
+# Get all pods from all namespaces
+kubctl get pods -A
+
+# Enter the pod (The first container of the pod)
+kubectl exec -it -n ingress-nginx nginx-ingress-controller-5694ccb578-zsflg bash
 
 ```

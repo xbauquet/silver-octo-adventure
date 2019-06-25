@@ -2,15 +2,18 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: silver-ingress
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
 spec:
   rules:
-    - http:
-        paths:
-          - path: /auth
-            backend:
-              serviceName: auth-service
-              servicePort: 80
-          - path: /api
-            backend:
-              serviceName: api-service
-              servicePort: 80
+  - http:
+      paths:
+        - path: /auth/?(.*)
+          backend:
+            serviceName: auth-service
+            servicePort: 80
+        - path: /main/?(.*)
+          backend:
+            serviceName: api-service
+            servicePort: 80

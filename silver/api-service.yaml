@@ -4,9 +4,8 @@ metadata:
   name: api-service
 spec:
   ports:
-    - port: 80
-      protocol: TCP
-      targetPort: 6000
+  - port: 80
+    protocol: TCP
+    targetPort: 4567
   selector:
-    app: silver-api-application
-  type: ClusterIP
+    app: silver-api-deployment

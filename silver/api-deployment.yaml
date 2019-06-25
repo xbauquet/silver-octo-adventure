@@ -15,5 +15,6 @@ spec:
       containers:
         - name: silver-api-application
           image: main-api
+          imagePullPolicy: Never
           ports:
             - containerPort: 4567
